@@ -130,4 +130,4 @@ jobs:
         port: 22
         script: |
           # Run kubectl apply command on the EC2 instance
-          kubectl apply -f petstore.yml
+          kubectl apply -f petstore.yaml
