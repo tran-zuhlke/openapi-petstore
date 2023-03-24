@@ -47,7 +47,8 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y maven
+        sudo apt-get install -y openjdk-8-jdk
+#        sudo apt-get install -y maven
 
     - name: Build the project
       run: mvn package
@@ -68,5 +69,6 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          sudo systemctl stop app.service
-          sudo systemctl start app.service
+          sudo systemctl stop app.jar
+          nohup java -jar /home/ec2-user/app.jar > app.log 2>&1 &
+#          sudo systemctl start app.jar
